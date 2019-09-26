@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Review</title>
+</head>
+<body>
+    <h2>Predict whether movie review is positive or negative</h2>
+
+    <form action="{% url 'movie_review:index'  %}" method="post">
+        {% csrf_token %}
+        <label>Copy and paste movie review in English to the box below</label><br/>
+        <textarea rows="8" cols="50" name='review'></textarea><br/>
+        <input type="submit" value="Predict"><br/><br/>
+    </form>
+
+    <label>Prediction (0 = most negative, 1 = most positive)</label><br/>
+    {{prediction}}<br/><br/>
+
+    <label>AI word mapping, (AI dictionary contains 88584 vocabulary). extra long reviews will be trimmed for prediction</label><br/>
+    {{wordMap}}
+</body>
+</html>
